@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<div class="card p-3 mb-3">
+  <p>
+    <h1>Ingreso de productos: <%= @category.name %></h1>
+  </p>
+
+  <hd><%= link_to 'Editar categoria', edit_category_path(@category), class:'btn' %>
+  <hd><%= link_to 'Salir categoria', categories_path, class:'btn' %>
+
+</div>
+
+<div class="card rounded-top rounded-bottom p-3">
+
+  <%= form_with(model: [ @category, @products ]) do |form| %>
+    <%= form.label :name, "Nombre" %>
+    <%= form.text_field :name %>
+    <%= form.label :price, "Precio" %>
+    <%= form.number_field :price %>
+    <%= form.submit "Crear" %>
+  <% end %>
+  <div class="card p-3">
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @category.products.each do |p| %>
+          <tr>
+            <td><%= p.name %></td>
+            <td><%= p.price %></td>
+            <td><%= link_to "Eliminar producto", category_product_path(@category, p), method: :delete, class:'btn' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

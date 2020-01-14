@@ -1,0 +1,8 @@
+<div class="card mt-3">
+  <h1 class="ml-3">Editar categoria</h1>
+
+  <%= render 'form', category: @category %>
+
+  <hd class="ml-3"><%= link_to 'Ver', @category, class:'btn mb-3' %>
+  <hd><%= link_to 'Salir', categories_path, class:'btn mb-3' %>
+</div>
